@@ -16,7 +16,7 @@ private:
     int m_threadNum;
     EventLoop* m_mainLoop;
     ThreadPool* m_threadPool;
-    int m_lfd;
+    int m_lfd;  // listener的抽象，这个fd只管监听
     unsigned short m_port;
 };
 
