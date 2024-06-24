@@ -23,6 +23,7 @@ public:
         FINISH,        
     };
 
+    /*
     enum HTTP_CODE {
         NO_REQUEST = 0,
         GET_REQUEST,
@@ -32,7 +33,7 @@ public:
         FILE_REQUEST,
         INTERNAL_ERROR,
         CLOSED_CONNECTION,
-    };
+    }; */
     
     HttpRequest() { Init(); }
     ~HttpRequest() = default;

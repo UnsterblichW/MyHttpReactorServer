@@ -199,7 +199,7 @@ bool HttpRequest::UserVerify(const string &name, const string &pwd, bool isLogin
     while(MYSQL_ROW row = mysql_fetch_row(res)) {
         LOG_DEBUG("MYSQL ROW: %s %s", row[0], row[1]);
         string password(row[1]);
-        /* 注册行为 且 用户名未被使用*/
+        /* 这个客户端想要登录，检查一下密码 */
         if(isLogin) {
             if(pwd == password) { flag = true; }
             else {
