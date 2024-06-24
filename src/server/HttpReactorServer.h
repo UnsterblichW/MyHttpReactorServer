@@ -19,6 +19,8 @@
 #include "../pool/sqlconnRAII.h"
 #include "../http/httpconn.h"
 
+#define RESOURCES_DIR_LEN 512
+
 class HttpReactorServer {
 public:
     HttpReactorServer(
@@ -56,7 +58,7 @@ private:
     int timeoutMS_;  /* 毫秒MS */
     bool isClose_;
     int listenFd_;
-    char* srcDir_;
+    char srcDir_[RESOURCES_DIR_LEN];
     
     uint32_t listenEvent_;
     uint32_t connEvent_;

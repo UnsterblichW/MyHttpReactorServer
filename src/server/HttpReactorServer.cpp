@@ -11,7 +11,8 @@ HttpReactorServer::HttpReactorServer(
             port_(port), openLinger_(OptLinger), timeoutMS_(timeoutMS), isClose_(false),
             timer_(new HeapTimer()), threadpool_(new ThreadPool(threadNum)), epoller_(new Epoller())
     {
-    strncat(srcDir_, "~/MyHttpReactorServer/resources", 32);
+    memset(srcDir_, 0, sizeof srcDir_);
+    strncat(srcDir_, "~/MyHttpReactorServer/resources", sizeof(srcDir_) - 1);
     assert(srcDir_);
     HttpConn::userCount = 0;
     HttpConn::srcDir = srcDir_;
@@ -39,7 +40,7 @@ HttpReactorServer::HttpReactorServer(
 HttpReactorServer::~HttpReactorServer() {
     close(listenFd_);
     isClose_ = true;
-    free(srcDir_);
+    //free(srcDir_);
     SqlConnPool::Instance()->ClosePool();
 }
 
