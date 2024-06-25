@@ -16,8 +16,9 @@
 
 ## 运行项目的步骤
 1. 修改`main.cpp`中的配置信息
-2. 到src目录中执行CMake来配置项目，配置完之后用Make和g++来编译项目，推荐使用VSCode的CMake插件，插件可以指定输出目录和编译器
-3. 在浏览器地址栏输出开启服务端程序的pc的ip和端口即可访问
+   ![main.cpp](https://github.com/UnsterblichW/MyHttpReactorServer/blob/main/readme.assest/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.png)
+3. 到src目录中执行CMake来配置项目，配置完之后用Make和g++来编译项目，推荐使用VSCode的CMake插件，插件可以指定输出目录和编译器
+4. 在浏览器地址栏输出开启服务端程序的pc的ip和端口即可访问
 
 ## 项目压力测试
 用比较广泛认可的网站压测工具 [WebBench](https://github.com/EZLippi/WebBench)
