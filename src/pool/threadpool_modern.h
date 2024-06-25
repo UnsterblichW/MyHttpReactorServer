@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __THREAD_POOL_H__
-#define __THREAD_POOL_H__
+#ifndef __THREAD_POOL_MORDERN_H__
+#define __THREAD_POOL_MORDERN_H__
 
 #include <atomic>
 #include <condition_variable>
@@ -11,20 +11,20 @@
 #include <thread>
 #include <vector>
 
-class ThreadPool {
+class ThreadPool_Modern {
 public:
-    ThreadPool(const ThreadPool&) = delete;
-    ThreadPool& operator=(const ThreadPool&) = delete;
+    ThreadPool_Modern(const ThreadPool_Modern&) = delete;
+    ThreadPool_Modern& operator=(const ThreadPool_Modern&) = delete;
 
-    static ThreadPool& instance() {
-        static ThreadPool ins;
+    static ThreadPool_Modern& instance() {
+        static ThreadPool_Modern ins;
         return ins;
     }
 
     using Task = std::packaged_task<void()>;
 
 
-    ~ThreadPool() {
+    ~ThreadPool_Modern() {
         stop();
     }
 
@@ -51,7 +51,7 @@ public:
     }
 
 private:
-    ThreadPool(unsigned int num = 5)
+    ThreadPool_Modern(unsigned int num = 5)
         : stop_(false) {
             {
                 if (num < 1)

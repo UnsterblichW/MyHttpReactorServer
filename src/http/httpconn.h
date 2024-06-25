@@ -58,7 +58,7 @@ private:
     bool isClose_;
     
     int iovCnt_;
-    struct iovec iov_[2];
+    struct iovec iov_[2];  // iov_[0] 来写响应头，iov_[1] 来写此处想要给对端发送的文件
     
     Buffer readBuff_; // 读缓冲区
     Buffer writeBuff_; // 写缓冲区
