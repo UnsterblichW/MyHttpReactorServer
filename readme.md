@@ -23,6 +23,12 @@
 ## 项目压力测试
 用比较广泛认可的网站压测工具 [WebBench](https://github.com/EZLippi/WebBench)
 
+500个连接 并发测试30s 结果如下
+![pressure1](https://github.com/UnsterblichW/MyHttpReactorServer/blob/main/readme.assest/MyHttpReactorServer_PressureTest.png)
+5000个连接 并发测试30s 结果如下
+![pressure1](https://github.com/UnsterblichW/MyHttpReactorServer/blob/main/readme.assest/MyHttpReactorServer_PressureTest2.png)
+
+
 ## 对于项目文件的简单说明
 1. `src\buffer` 该文件夹封装了读写缓冲区结构，主要是解决在write和read的时候一次性没把数据处理完，支持下一次操作继续处理的问题；
 2. `src\http` 该文件夹封装了对于http的请求和回应相关的具体操作，如何解析Get和Post请求，有限状态机的定义，简易的注册登录（和MySQL交互）
