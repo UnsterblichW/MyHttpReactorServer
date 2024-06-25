@@ -1,5 +1,6 @@
 
 #include "HttpReactorServer.h"
+#include <unistd.h>
 
 using namespace std;
 
@@ -11,11 +12,20 @@ HttpReactorServer::HttpReactorServer(
             port_(port), openLinger_(OptLinger), timeoutMS_(timeoutMS), isClose_(false),
             timer_(new HeapTimer()), threadpool_(new ThreadPool(threadNum)), epoller_(new Epoller())
     {
-    memset(srcDir_, 0, sizeof srcDir_);
-    strncat(srcDir_, "~/MyHttpReactorServer/resources", sizeof(srcDir_) - 1);
-    assert(srcDir_);
+    const char* workingDir = "/home/unsterblich/MyHttpReactorServer";
+    if (chdir(workingDir) == 0) {
+        LOG_INFO("Successfully changed directory to: %s", workingDir)
+    } else {
+        LOG_INFO("Failed to change directory. Error:  %d", strerror(errno))
+    }
+
+    // 注意，我的build目录（我的生成可执行文件将会放在build目录）是生成在当前工作目录下的，也就是 /MyHttpReactorServer/build，build目录和resources是同级的，所以下面这样写没错
+    // 要是build目录生成在别的路径，下面的资源路径的相对路径要改一下
+    srcDir_ = workingDir + std::string("/resources/");
+    LOG_INFO("HttpReactorServer resources path is : %s", srcDir_.c_str())
+
     HttpConn::userCount = 0;
-    HttpConn::srcDir = srcDir_;
+    HttpConn::srcDir = srcDir_.c_str();
     SqlConnPool::Instance()->Init("localhost", sqlPort, sqlUser, sqlPwd, dbName, connPoolNum);
 
     InitEventMode_(trigMode);

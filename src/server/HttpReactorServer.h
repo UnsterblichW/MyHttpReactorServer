@@ -10,7 +10,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-
+#include <string>
 #include "epoller.h"
 #include "../log/log.h"
 #include "../timer/heaptimer.h"
@@ -19,7 +19,6 @@
 #include "../pool/sqlconnRAII.h"
 #include "../http/httpconn.h"
 
-#define RESOURCES_DIR_LEN 512
 
 class HttpReactorServer {
 public:
@@ -58,7 +57,9 @@ private:
     int timeoutMS_;  /* 毫秒MS */
     bool isClose_;
     int listenFd_;
-    char srcDir_[RESOURCES_DIR_LEN];
+    //char srcDir_[RESOURCES_DIR_LEN];
+
+    std::string srcDir_;
     
     uint32_t listenEvent_;
     uint32_t connEvent_;
