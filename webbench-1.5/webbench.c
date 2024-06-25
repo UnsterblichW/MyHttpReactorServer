@@ -18,7 +18,7 @@
 #include "socket.c"
 #include <unistd.h>
 #include <sys/param.h>
-#include <rpc/types.h>
+#include <sys/types.h>  // webbench源码的这里是 <rpc/types.h> 但我的ubuntu22.04里面在 /usr/include/rpc 目录下并没有types.h，搜了一波之后发现用 <sys/types.h> 代替也可以
 #include <getopt.h>
 #include <strings.h>
 #include <time.h>
