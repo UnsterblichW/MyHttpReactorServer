@@ -4,12 +4,14 @@
 
 #include <atomic>
 #include <condition_variable>
+//#include <algorithm>
 #include <future>
 #include <iostream>
 #include <mutex>
 #include <queue>
 #include <thread>
 #include <vector>
+#include <functional>
 
 class ThreadPool_Modern {
 public:
