@@ -22,12 +22,14 @@ void SqlConnPool::Init(const char* host, int port,
         if (!sql) {
             LOG_ERROR("MySql init error!");
             assert(sql);
+            return;
         }
         sql = mysql_real_connect(sql, host,
                                  user, pwd,
                                  dbName, port, nullptr, 0);
         if (!sql) {
             LOG_ERROR("MySql Connect error!");
+            return;
         }
         connQue_.push(sql);
     }
